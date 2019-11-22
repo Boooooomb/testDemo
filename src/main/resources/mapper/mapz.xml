@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.xxx.demo.dao.UserDao">
+    <resultMap id="userMap" type="com.test.xxx.demo.pojo.User">
+        <id column="document_num" property="document_num"></id>
+        <result column="document_name" property="document_name"/>
+        <result column="document_digest" property="document_digest"/>
+        <result column="uploading_user" property="uploading_user"/>
+        <result column="uploading_time" property="uploading_time"/>
+    </resultMap>
+
+    <insert id="add">
+        insert into zhangsan.user (document_name,document_digest,uploading_user,uploading_time) values (#{document_name},#{document_digest},#{uploading_user},#{uploading_time});
+    </insert>
+
+    <select id="list" resultMap="userMap">
+        select * from zhangsan.user;
+    </select>
+
+    <delete id="delete">
+        delete from zhangsan.user where document_num = #{id};
+    </delete>
+
+    <update id="update">
+        update zhangsan.user set document_name=#{document_name}, document_digest=#{document_digest}, uploading_user=#{uploading_user},uploading_time=#{uploading_time} where document_num=#{document_num};
+    </update>
+
+    <select id="find" resultMap="userMap">
+        select * from zhangsan.user where document_num = #{id};
+    </select>
+
+    <select id="selectSingle" resultMap="userMap">
+        select * from zhangsan.user where document_name = #{name};
+    </select>
+
+
+
+
+
+</mapper>
+
+<!--        int document_num;-->
+<!--        String document_name;-->
+<!--        String document_digest;-->
+<!--        String uploading_user;-->
+<!--        String uploading_time;-->
